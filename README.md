@@ -1,4 +1,4 @@
 # hortaConecta
-Rest to supports buy and sell fruits and vegetables
+Rest to support buy and sell fruits and vegetables
 
 _Under developement_

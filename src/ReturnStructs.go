@@ -16,6 +16,6 @@ type ReturnStruct struct {
 }
 
 type ReturnAdvertisements struct {
-	Return ReturnStruct
-	Ads    Advertisements
+	Return ReturnStruct   `json:"return"`
+	Ads    Advertisements `json:"ads"`
 }

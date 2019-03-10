@@ -2,15 +2,27 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	_ "github.com/go-sql-driver/mysql"
+	"os"
 )
 
 func dbConn() (db *sql.DB) {
+
+	file, err := os.Open("config/config.json")
+	defer file.Close()
+	decoder := json.NewDecoder(file)
+	configuration := DataConfiguration{}
+	err = decoder.Decode(&configuration)
+	if err != nil {
+		panic(err.Error())
+	}
+
 	dbDriver := "mysql"
-	dbUser := "root"
-	dbPass := "abc123"
-	dbName := "hortaConecta"
-	db, err := sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
+	dbUser := configuration.Database.User
+	dbPass := configuration.Database.Password
+	dbName := configuration.Database.Namedb
+	db, err = sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
 	if err != nil {
 		panic(err.Error())
 	}

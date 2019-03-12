@@ -11,8 +11,9 @@ type Advertisement struct {
 type Advertisements []Advertisement
 
 type ReturnStruct struct {
-	State   int    `json:"state"`
-	Message string `json:"message"`
+	State            int    `json:"state"`
+	Message          string `json:"message"`
+	TechnicalMessage string `json:"technicalMessage"`
 }
 
 type ReturnAdvertisements struct {
